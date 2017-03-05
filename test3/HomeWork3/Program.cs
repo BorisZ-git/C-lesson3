@@ -16,31 +16,34 @@ namespace HomeWork3
     {
         static void Main(string[] args)
         {
+            Fractions frs1 = new Fractions(3, 4);
+            Fractions frs2 = new Fractions(3, 5);
+            Fractions frs3 = new Fractions();
+            frs3 = frs1.Plus(frs2);
 
         }
-        class Numbers
+        class Fractions
         {
             // числитель
             int numerator;
             // знаменатель 
             int denominator;
             //constructor empty
-            public Numbers()
+            public Fractions()
             {
 
             }
             //constructor take value
-            public Numbers(int numerator, int denominator)
+            public Fractions(int numerator, int denominator)
             {
                 this.denominator = denominator;
                 this.numerator = numerator;
             }
             //Realize method Plus
-            public Numbers Plus(Numbers x)
+            public Fractions Plus(Fractions x)
             {
-                Numbers y = new Numbers();
-                y.numerator = numerator + x.numerator;
-                y.denominator = denominator + x.denominator;
+                Fractions y = new Fractions();
+
                 return y;
             }
 
