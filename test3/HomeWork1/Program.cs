@@ -16,6 +16,12 @@ namespace HomeWork1
     {
         static void Main()
         {
+            Complex num1 = new Complex(1, 2);
+            Complex num2 = new Complex(9, 8);
+            Complex num3 = new Complex();
+
+            num3 = num1.Plus(num2);
+            num3.ShowRes();
 
             Console.ReadLine();            
         }
@@ -25,7 +31,7 @@ namespace HomeWork1
             double bi;
             double ci;
             //Realize Constructor(Пишем конструктор задающий переменные при создании объекта)
-            Complex(double bi, double ci)
+            public Complex(double bi, double ci)
             {
                 this.bi = bi;
                 this.ci = ci;
@@ -35,12 +41,17 @@ namespace HomeWork1
              *передавая в метод данные присвоенные уже созданному объекту(через конструктор)
              *Возвращает объект c полученными переменными.
             */ 
-            Complex Plus(Complex x)
+            public Complex Plus(Complex x)
             {
                 Complex y;
                 y.bi = bi + x.bi;
                 y.ci = ci + x.ci;
                 return y;
+            }
+            //Realize method that show value of variables (Выводит значение переменных на экран)
+            public void ShowRes()
+            {
+               Console.WriteLine($"Первое: {bi}\tВторое: {ci}");
             }
         }
     }
