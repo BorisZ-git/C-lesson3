@@ -16,22 +16,27 @@ namespace HomeWork1
     {
         static void Main()
         {
-            Complex num1 = new Complex(1, 2);
-            Complex num2 = new Complex(9, 8);
-            Complex num3 = new Complex();
+            // 1
+            ComplexStruct num1 = new ComplexStruct(1, 2);
+            ComplexStruct num2 = new ComplexStruct(9, 8);
+            ComplexStruct num3 = new ComplexStruct();
 
             num3 = num1.Plus(num2);
             num3.ShowRes();
+            // 1.1
+            num3 = num2.Minus(num1);
+            num3.ShowRes();
+            // 1.2
 
             Console.ReadLine();            
         }
 
-        struct Complex
+        struct ComplexStruct
         {
             double bi;
             double ci;
             //Realize Constructor(Пишем конструктор задающий переменные при создании объекта)
-            public Complex(double bi, double ci)
+            public ComplexStruct(double bi, double ci)
             {
                 this.bi = bi;
                 this.ci = ci;
@@ -41,17 +46,37 @@ namespace HomeWork1
              *передавая в метод данные присвоенные уже созданному объекту(через конструктор)
              *Возвращает объект c полученными переменными.
             */ 
-            public Complex Plus(Complex x)
+            public ComplexStruct Plus(ComplexStruct x)
             {
-                Complex y;
+                ComplexStruct y;
                 y.bi = bi + x.bi;
                 y.ci = ci + x.ci;
                 return y;
             }
+            //Realize method Minus(Реализуем метод вычитания)
+            public ComplexStruct Minus(ComplexStruct x)
+            {
+                ComplexStruct y;
+                y.bi = bi - x.bi;
+                y.ci = ci - x.ci;
+                return y;
+            }
+
             //Realize method that show value of variables (Выводит значение переменных на экран)
             public void ShowRes()
             {
                Console.WriteLine($"Первое: {bi}\tВторое: {ci}");
+            }
+        }
+        
+        class ComplexClass
+        {
+            double bi;
+            double ci;
+            public ComplexClass(double bi,double ci)
+            {
+                this.bi = bi;
+                this.ci = ci;
             }
         }
     }
