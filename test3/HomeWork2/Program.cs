@@ -18,16 +18,42 @@ namespace HomeWork2
         static void Main(string[] args)
         {
             //Hello
+            Console.WriteLine("Вводите числа.Введите 0 если хотите остановиться: ");
+
+            //2.1            
+            Console.WriteLine($"Сумма всех нечетных положительных чисел = {DoWhile()}");
+            Console.ReadLine();
+            //2.2
+        }
+
+        static int DoWhile()
+        {
             int sum = 0;
             int UserNum;
-            Console.WriteLine("Введите число.Введите 0 если хотите остановиться: ");
-            if (int.TryParse(Console.ReadLine(),out UserNum))
+            bool flag;
+            do
             {
-                if (UserNum%2 != 0 && UserNum%2 > 0)
+                Console.Write("Введите число: ");
+                flag = int.TryParse(Console.ReadLine(), out UserNum);
+                if (flag)
                 {
-                    sum = sum + UserNum;
+                    if (UserNum % 2 != 0 && UserNum % 2 > 0)
+                    {
+                        sum = sum + UserNum;
+                    }
+                    if (UserNum == 0)
+                    {
+                        Console.WriteLine("Осуществляем выход");
+                        break;
+                    }
                 }
-            }
+                else
+                {
+                    Console.WriteLine("Ошибка вы ввели не число");
+                    flag = true;
+                }
+            } while (flag);
+            return sum;
         }
     }
 }
