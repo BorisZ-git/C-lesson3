@@ -9,21 +9,26 @@ using System.Threading.Tasks;
  *  Написать программу, демонстрирующую все разработанные элементы класса.
  *  Достаточно решить 2 задачи. Все программы сделайть в одном решении. 
  * */
+/* ВОПРОСЫ:
+ * 
+*/
 
 namespace HomeWork3
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine(5 % 3);
-            Console.WriteLine(9 / 2);
-
-            Fractions frs1 = new Fractions(120, 426);
-            Fractions frs2 = new Fractions(6, 426);
+        {            
+            Fractions frs1 = new Fractions(5, 10);
+            Fractions frs2 = new Fractions(7, 10);
             Fractions frs3 = new Fractions();
             frs3 = frs1.Plus(frs2);
             frs3.ShowRes();
+            //REALIZE NEGATIVE VALUE
+            //REALIZE METHOD SIMPLYFYING
+            frs3 = frs2.Minus(frs1);
+            frs3.ShowRes();
+
             Console.ReadLine();
 
         }
@@ -50,14 +55,16 @@ namespace HomeWork3
             public Fractions Plus(Fractions x)
             {
                 Fractions y = new Fractions();
-                //int ComMul = 0;
+                //int ComMul;
 
                 if (den==x.den)
                 {
                     y.den = den;
                     y.num = num + x.num;
                     //simplifying fractions
-                    for (integer = 0; y.num > y.den; ++integer) y.num = y.num - y.den;
+                    int nod = NOD(y.den, y.num);
+                    y.den = y.den / nod;
+                    y.num = y.num / nod;
 
                 }
                 //We need to set all fractions to one denominator
@@ -70,19 +77,48 @@ namespace HomeWork3
                     y.num = (num * (EqualDen / den)) + (x.num * (EqualDen / x.den));
                     y.den = EqualDen;
                     //simplifying fractions
-                    for (integer = 0; y.num > y.den; ++integer) y.num = y.num - y.den;
+                    int nod = NOD(y.den, y.num);
+                    y.den = y.den / nod;
+                    y.num = y.num / nod;
+                }
+                return y;
+            }
+            //Realize method Minus
+            public Fractions Minus(Fractions x)
+            {
+                Fractions y = new Fractions();
+                //int ComMul;
 
-                    //for (int i = 1; y.den % i == 0 | y.num % i == 0; ComMul = ++i) ;
-                    //y.den = y.den / ComMul;
-                    //y.num = y.num / ComMul;
+                if (den == x.den)
+                {
+                    y.den = den;
+                    y.num = num - x.num;
+                    //simplifying fractions
+                    int nod = NOD(y.den, y.num);
+                    y.den = y.den / nod;
+                    y.num = y.num / nod;
 
+                }
+                //We need to set all fractions to one denominator
+                else
+                {
+                    //find equal denominator
+                    int EqualDen = 0;
+                    for (int i = 1; i % den != 0 | i % x.den != 0; EqualDen = ++i) ;
+                    //reduce to a common denominator
+                    y.num = (num * (EqualDen / den)) - (x.num * (EqualDen / x.den));
+                    y.den = EqualDen;
+                    //simplifying fractions
+                    int nod = NOD(y.den, y.num);
+                    y.den = y.den / nod;
+                    y.num = y.num / nod;
                 }
                 return y;
             }
             //Realize method ShowRes
             public void ShowRes()
             {
-                Console.WriteLine($"{integer} {num}/{den}");
+                Console.WriteLine($"{num}/{den}");
             }
             //Get NOD
             static int NOD(int a,int b)
@@ -93,7 +129,11 @@ namespace HomeWork3
                 }
                 return a;
             }            
+            //Simplifying fractions NEED REALIZE
+            static void SetSimply()
+            {
 
+            }
         }
     }
 }
