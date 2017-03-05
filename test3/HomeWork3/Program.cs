@@ -16,6 +16,11 @@ namespace HomeWork3
     {
         static void Main(string[] args)
         {
+
+        }
+        class Numbers
+        {
+
         }
     }
 }
