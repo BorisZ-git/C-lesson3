@@ -43,13 +43,23 @@ namespace HomeWork3
             public Fractions Plus(Fractions x)
             {
                 Fractions y = new Fractions();
-                //We need to set all fractions to one denominator
                 if (denominator==x.denominator)
                 {
                     y.denominator = denominator;
                     y.numerator = numerator + x.numerator;
                 }
-
+                //We need to set all fractions to one denominator
+                else
+                {
+                    //find equal denominator
+                    int EqualDenominator = 0;
+                    for (int i = 0; i % x.denominator != 0 && i % denominator != 0; i++)
+                        EqualDenominator=i ;
+                    //reduce to a common denominator
+                    y.numerator = (numerator * EqualDenominator / denominator) +
+                        (x.numerator * EqualDenominator / x.denominator);
+                    y.denominator = EqualDenominator;
+                }
                 return y;
             }
 
