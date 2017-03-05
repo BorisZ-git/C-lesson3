@@ -78,6 +78,21 @@ namespace HomeWork1
                 this.bi = bi;
                 this.ci = ci;
             }
+            public ComplexClass()
+            {
+
+            }
+            public ComplexClass Multi(ComplexClass x)
+            {
+                ComplexClass y = new ComplexClass();
+                y.bi = bi * x.bi;                
+                y.ci = ci * x.bi;
+                return y;
+            }
+            public void ShowRes()
+            {
+                Console.WriteLine($"Первое: {bi}\tВторое: {ci}");
+            }
         }
     }
 }
