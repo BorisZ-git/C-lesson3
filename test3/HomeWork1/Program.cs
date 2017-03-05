@@ -17,20 +17,33 @@ namespace HomeWork1
         static void Main()
         {
             // 1
+            Console.WriteLine("Используем структуру:");
             ComplexStruct num1 = new ComplexStruct(1, 2);
             ComplexStruct num2 = new ComplexStruct(9, 8);
             ComplexStruct num3 = new ComplexStruct();
-
+            // 1.1
+            Console.WriteLine("\tСложение:");
             num3 = num1.Plus(num2);
             num3.ShowRes();
-            // 1.1
+            Console.WriteLine("\tВычитание:");
             num3 = num2.Minus(num1);
             num3.ShowRes();
             // 1.2
+            Console.WriteLine("Используем класс:");
+            ComplexClass val1 = new ComplexClass(42, 23);
+            ComplexClass val2 = new ComplexClass(21, 77);
+            ComplexClass val3 = new ComplexClass();
 
+            Console.WriteLine("\tУмножение:");
+            val3 = val1.Multi(val2);
+            val3.ShowRes();
+            Console.WriteLine("\tВычитание:");
+            val3 = val2.Minus(val1);
+            val3.ShowRes();
+            //Pause
             Console.ReadLine();            
         }
-
+        //structure
         struct ComplexStruct
         {
             double bi;
@@ -68,7 +81,7 @@ namespace HomeWork1
                Console.WriteLine($"Первое: {bi}\tВторое: {ci}");
             }
         }
-        
+        //class
         class ComplexClass
         {
             double bi;
@@ -78,6 +91,7 @@ namespace HomeWork1
                 this.bi = bi;
                 this.ci = ci;
             }
+            //need to create new constructor(нужно создать пустой контсруктор)
             public ComplexClass()
             {
 
@@ -87,6 +101,13 @@ namespace HomeWork1
                 ComplexClass y = new ComplexClass();
                 y.bi = bi * x.bi;                
                 y.ci = ci * x.bi;
+                return y;
+            }
+            public ComplexClass Minus(ComplexClass x)
+            {
+                ComplexClass y = new ComplexClass();
+                y.bi = bi - x.bi;
+                y.ci = ci - x.ci;
                 return y;
             }
             public void ShowRes()
