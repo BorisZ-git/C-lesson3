@@ -17,6 +17,12 @@ namespace HomeWork2
     {
         static void Main(string[] args)
         {
+            //Hello
+            Console.WriteLine("Введите число.Введите 0 если хотите остановиться: ");
+            if (int.TryParse(Console.ReadLine(), out UserNum))
+            {
+
+            }
         }
     }
 }
