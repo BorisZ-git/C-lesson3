@@ -24,10 +24,23 @@ namespace HomeWork1
         {
             double bi;
             double ci;
+            //Realize Constructor(Пишем конструктор задающий переменные при создании объекта)
             Complex(double bi, double ci)
             {
                 this.bi = bi;
                 this.ci = ci;
+            }
+            /*Realize method Plus(Реализуем метод сложения)
+             *создаем объект "y" присваиваем его переменным значения 
+             *передавая в метод данные присвоенные уже созданному объекту(через конструктор)
+             *Возвращает объект c полученными переменными.
+            */ 
+            Complex Plus(Complex x)
+            {
+                Complex y;
+                y.bi = bi + x.bi;
+                y.ci = ci + x.ci;
+                return y;
             }
         }
     }
