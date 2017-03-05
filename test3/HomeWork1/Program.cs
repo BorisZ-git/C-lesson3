@@ -23,24 +23,31 @@ namespace HomeWork1
     {
         static void Main()
         {
-            Complex manipulation = new Complex();
-            manipulation.im = 7;
-            manipulation.re = 10;
-            manipulation.Plus(manipulation);
-            Console.ReadLine();
+            Complex i1 = new Complex();
+            Complex i2 = new Complex();
+            Complex i3 = new Complex();
 
-            
+
+            Console.ReadLine();            
         }
+
         struct Complex
         {
             public double im;
             public double re;
+            // Сonstructor for Complex
+            public Complex(double im, double re)
+            {
+                this.im = im;
+                this.re = re;
+            }
             // в C# в структурах могут храниться так же действия над данными
             public Complex Plus(Complex x)
             {
                 Complex y;
                 y.im = im + x.im;
                 y.re = re + x.re;
+                Console.WriteLine($"{y.im} {y.re}");
                 return y;
             }
             // Пример произведения двух комплексных чисел
