@@ -24,6 +24,17 @@ namespace HomeWork3
             int numerator;
             // знаменатель 
             int denominator;
+            //constructor empty
+            public Numbers()
+            {
+
+            }
+            //constructor take value
+            public Numbers(int numerator, int denominator)
+            {
+                this.denominator = denominator;
+                this.numerator = numerator;
+            }
             //Realize method Plus
             public Numbers Plus(Numbers x)
             {
