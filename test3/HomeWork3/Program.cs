@@ -20,6 +20,18 @@ namespace HomeWork3
         }
         class Numbers
         {
+            // числитель
+            int numerator;
+            // знаменатель 
+            int denominator;
+            //Realize method Plus
+            public Numbers Plus(Numbers x)
+            {
+                Numbers y = new Numbers();
+                y.numerator = numerator + x.numerator;
+                y.denominator = denominator + x.denominator;
+                return y;
+            }
 
         }
     }
