@@ -24,6 +24,11 @@ namespace HomeWork1
         {
             double bi;
             double ci;
+            Complex(double bi, double ci)
+            {
+                this.bi = bi;
+                this.ci = ci;
+            }
         }
     }
 }
