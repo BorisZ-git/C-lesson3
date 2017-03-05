@@ -20,6 +20,8 @@ namespace HomeWork3
             Fractions frs2 = new Fractions(3, 5);
             Fractions frs3 = new Fractions();
             frs3 = frs1.Plus(frs2);
+            frs3.ShowRes();
+            Console.ReadLine();
 
         }
         class Fractions
@@ -61,6 +63,11 @@ namespace HomeWork3
                     y.denominator = EqualDenominator;
                 }
                 return y;
+            }
+            //Realize method ShowRes
+            public void ShowRes()
+            {
+                Console.WriteLine($"{numerator}/{denominator}");
             }
 
         }
