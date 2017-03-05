@@ -16,8 +16,11 @@ namespace HomeWork3
     {
         static void Main(string[] args)
         {
-            Fractions frs1 = new Fractions(3, 4);
-            Fractions frs2 = new Fractions(3, 5);
+            Console.WriteLine(3 % 5);
+            Console.WriteLine(3 / 4);
+
+            Fractions frs1 = new Fractions(2, 5);
+            Fractions frs2 = new Fractions(3, 4);
             Fractions frs3 = new Fractions();
             frs3 = frs1.Plus(frs2);
             frs3.ShowRes();
@@ -55,11 +58,11 @@ namespace HomeWork3
                 {
                     //find equal denominator
                     int EqualDenominator = 0;
-                    for (int i = 0; i % x.denominator != 0 && i % denominator != 0; i++)
-                        EqualDenominator=i ;
+                    for (int i = 1; i % denominator != 0 
+                        | i % x.denominator != 0; EqualDenominator = ++i) ;                    
                     //reduce to a common denominator
-                    y.numerator = (numerator * EqualDenominator / denominator) +
-                        (x.numerator * EqualDenominator / x.denominator);
+                    y.numerator = (numerator * (EqualDenominator / denominator)) +
+                        (x.numerator * (EqualDenominator / x.denominator));
                     y.denominator = EqualDenominator;
                 }
                 return y;
