@@ -43,6 +43,12 @@ namespace HomeWork3
             public Fractions Plus(Fractions x)
             {
                 Fractions y = new Fractions();
+                //We need to set all fractions to one denominator
+                if (denominator==x.denominator)
+                {
+                    y.denominator = denominator;
+                    y.numerator = numerator + x.numerator;
+                }
 
                 return y;
             }
