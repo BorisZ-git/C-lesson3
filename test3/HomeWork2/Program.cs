@@ -20,10 +20,14 @@ namespace HomeWork2
             //Hello
             Console.WriteLine("Вводите числа.Введите 0 если хотите остановиться: ");
 
-            //2.1            
+            //2.1 
+            Console.WriteLine("Реализуем с помощью TryParse");           
             Console.WriteLine($"Сумма всех нечетных положительных чисел = {DoWhileParse()}");
-            Console.ReadLine();
             //2.2
+            Console.WriteLine("Реализуем с помощью TryCatch");
+            DoWhileCatch();
+            Console.ReadLine();
+
         }
 
         static int DoWhileParse()
@@ -54,6 +58,28 @@ namespace HomeWork2
                 }
             } while (flag);
             return sum;
+        }
+        static void DoWhileCatch()
+        {
+            int sum = 0;
+            ;
+            do
+            {
+                Console.Write("Введите число: ");
+                try
+                {
+                    int UserNum = int.Parse(Console.ReadLine());
+                    if (UserNum % 2 != 0 && UserNum % 2 > 0) sum = sum + UserNum;
+                    if (UserNum == 0)
+                    {
+                        Console.WriteLine("Осуществляем выход");
+                        break;
+                    }
+                }
+                catch { Console.WriteLine("Ошибка вы ввели не число"); }              
+
+            } while (true);
+            Console.WriteLine($"Сумма всех нечетных положительных чисел = {sum}");
         }
     }
 }
