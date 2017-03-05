@@ -21,12 +21,12 @@ namespace HomeWork2
             Console.WriteLine("Вводите числа.Введите 0 если хотите остановиться: ");
 
             //2.1            
-            Console.WriteLine($"Сумма всех нечетных положительных чисел = {DoWhile()}");
+            Console.WriteLine($"Сумма всех нечетных положительных чисел = {DoWhileParse()}");
             Console.ReadLine();
             //2.2
         }
 
-        static int DoWhile()
+        static int DoWhileParse()
         {
             int sum = 0;
             int UserNum;
