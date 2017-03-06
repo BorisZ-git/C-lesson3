@@ -22,10 +22,23 @@ namespace HomeWork3
     class Program
     {
         static void Main(string[] args)
-        {            
-            Fractions frs1 = new Fractions(5, 10);
-            Fractions frs2 = new Fractions(7, 10);
-            Fractions frs3 = new Fractions();
+        {
+            //Hello
+            Console.WriteLine("Привет! Данная программа поможет" +
+                "осуществить вычисления между дробями");
+            Console.Write("Введите числитель первой дроби: ");
+            int a1 = int.Parse(Console.ReadLine());
+            Console.Write("Введите знаменатель первой дроби: ");
+            int b1 = int.Parse(Console.ReadLine());
+            Console.Write("Введите числитель второй дроби: ");
+            int a2 = int.Parse(Console.ReadLine());
+            Console.Write("Введите знаменатель второй дроби: ");
+            int b2 = int.Parse(Console.ReadLine());
+
+
+            Fractions frs1 = new Fractions(a1, b1);
+            Fractions frs2 = new Fractions(a2, b2);
+            Fractions frs3 = new Fractions();            
             frs3 = frs1.Plus(frs2);
             frs3.ShowRes();
             //REALIZE NEGATIVE VALUE
@@ -63,7 +76,7 @@ namespace HomeWork3
             public Fractions Plus(Fractions x)
             {
                 Fractions y = new Fractions();
-                //int ComMul;
+                Console.WriteLine("Сумма дробей: ");
 
                 if (den==x.den)
                 {
@@ -94,7 +107,8 @@ namespace HomeWork3
             public Fractions Minus(Fractions x)
             {
                 Fractions y = new Fractions();
-                //int ComMul;
+                Console.WriteLine("Разница дробей: ");
+
 
                 if (den == x.den)
                 {
@@ -125,6 +139,7 @@ namespace HomeWork3
             public Fractions Multiplication(Fractions x)
             {
                 Fractions y = new Fractions();
+                Console.WriteLine("Произведенние дробей: ");
                 y.num = num * x.num;
                 y.den = den * x.den;
                 //simplifying fractions
@@ -136,6 +151,7 @@ namespace HomeWork3
             public Fractions Division(Fractions x)
             {
                 Fractions y = new Fractions();
+                Console.WriteLine("Отношение дробей: ");
                 y.num = num * SwapNum(x.num,x.den);
                 y.den = den * SwapDen(x.num,x.den);
                 //simplifying fractions
@@ -143,8 +159,7 @@ namespace HomeWork3
                 y.den = y.den / nod;
                 y.num = y.num / nod;
                 return y;
-            }
-            
+            }            
             //Realize method ShowRes
             public void ShowRes()
             {
