@@ -18,14 +18,49 @@ namespace test3
         static void Main()
         {
             //1.1
-                Draw();
-         
+            string Hor = "**********";
+            int StrHorLength, width, height, x, y;
+            width = Console.WindowWidth;
+            height = Console.WindowHeight;
+            StrHorLength = Hor.Length;          
+            x = (width - StrHorLength)  / 2;
+            y = height / 2;
+
+            DrawLine(x, y, Hor);
+            DrawLine(x, y+5, Hor);
+
+            DrawVerti(x,y);
+            DrawVerti(x+10, y);
+            
+            //1.2
+
+
+
+            Console.ReadLine();
+            
         }
-        static void Draw()
+        static void DrawLine(int x,int y, string str)
         {
-            int x = Console.BufferHeight / 4;
-            int y = Console.WindowWidth / 4;
             Console.SetCursorPosition(x, y);
+            Console.WriteLine(str);
+        }
+        static void DrawHoriz(int x,int y)
+        {
+            for (int i = 0; i< 10; i++)
+            {
+                Console.SetCursorPosition(x,y);
+                x++;
+                Console.Write('*');
+            }  
+        }
+        static void DrawVerti(int x,int y)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                Console.SetCursorPosition(x, y);
+                y++;
+                Console.Write('*');
+            }
         }
     }
 }
