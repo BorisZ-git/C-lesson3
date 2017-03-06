@@ -10,7 +10,11 @@ using System.Threading.Tasks;
  *  Достаточно решить 2 задачи. Все программы сделайть в одном решении. 
  * */
 /* ВОПРОСЫ:
- * 
+ * Если & - означает И. А | - означает ИЛИ. То почему в данном примере работает | ?
+ * for (int i = 1; i % den != 0 | i % x.den != 0; EqualDen = ++i); (метод Plus)
+ * Я так понимаю это из-за результата логической операции, что он возвращает False
+ * как только одно из условий перестает выполняться. Но в голове это не укладывается.
+ * Ведь логически должно быть: выполняй пока это условие истинно И пока это условие истинно.
 */
 
 namespace HomeWork3
@@ -27,6 +31,10 @@ namespace HomeWork3
             //REALIZE NEGATIVE VALUE
             //REALIZE METHOD SIMPLYFYING
             frs3 = frs2.Minus(frs1);
+            frs3.ShowRes();
+            frs3 = frs2.Multiplication(frs1);
+            frs3.ShowRes();
+            frs3 = frs2.Divine(frs1);
             frs3.ShowRes();
 
             Console.ReadLine();
@@ -51,7 +59,7 @@ namespace HomeWork3
                 den = denominator;
                 num = numerator;
             }
-            //Realize method Plus
+            //Realize methods
             public Fractions Plus(Fractions x)
             {
                 Fractions y = new Fractions();
@@ -82,8 +90,7 @@ namespace HomeWork3
                     y.num = y.num / nod;
                 }
                 return y;
-            }
-            //Realize method Minus
+            }            
             public Fractions Minus(Fractions x)
             {
                 Fractions y = new Fractions();
@@ -115,6 +122,42 @@ namespace HomeWork3
                 }
                 return y;
             }
+            public Fractions Multiplication(Fractions x)
+            {
+                Fractions y = new Fractions();
+                if (den == x.den)
+                {
+                    y.den = den;
+                    y.num = num * x.num;
+                    //simplifying fractions
+                    int nod = NOD(y.den, y.num);
+                    y.den = y.den / nod;
+                    y.num = y.num / nod;
+
+                }
+                //We need to set all fractions to one denominator
+                else
+                {
+                    //find equal denominator
+                    int EqualDen = 0;
+                    for (int i = 1; i % den != 0 | i % x.den != 0; EqualDen = ++i) ;
+                    //reduce to a common denominator
+                    y.num = (num * (EqualDen / den)) * (x.num * (EqualDen / x.den));
+                    y.den = EqualDen;
+                    //simplifying fractions
+                    int nod = NOD(y.den, y.num);
+                    y.den = y.den / nod;
+                    y.num = y.num / nod;
+                }
+                return y;
+            }
+            public Fractions Divine(Fractions x)
+            {
+                Fractions y = new Fractions();
+                                
+                return y;
+            }
+            
             //Realize method ShowRes
             public void ShowRes()
             {
