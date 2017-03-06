@@ -125,7 +125,12 @@ namespace HomeWork3
             public Fractions Multiplication(Fractions x)
             {
                 Fractions y = new Fractions();
-
+                y.num = num * x.num;
+                y.den = den * x.den;
+                //simplifying fractions
+                int nod = NOD(y.den, y.num);
+                y.den = y.den / nod;
+                y.num = y.num / nod;
                 return y;
             }
             public Fractions Division(Fractions x)
