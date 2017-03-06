@@ -34,7 +34,7 @@ namespace HomeWork3
             frs3.ShowRes();
             frs3 = frs2.Multiplication(frs1);
             frs3.ShowRes();
-            frs3 = frs2.Divine(frs1);
+            frs3 = frs2.Division(frs1);
             frs3.ShowRes();
 
             Console.ReadLine();
@@ -125,36 +125,18 @@ namespace HomeWork3
             public Fractions Multiplication(Fractions x)
             {
                 Fractions y = new Fractions();
-                if (den == x.den)
-                {
-                    y.den = den;
-                    y.num = num * x.num;
-                    //simplifying fractions
-                    int nod = NOD(y.den, y.num);
-                    y.den = y.den / nod;
-                    y.num = y.num / nod;
 
-                }
-                //We need to set all fractions to one denominator
-                else
-                {
-                    //find equal denominator
-                    int EqualDen = 0;
-                    for (int i = 1; i % den != 0 | i % x.den != 0; EqualDen = ++i) ;
-                    //reduce to a common denominator
-                    y.num = (num * (EqualDen / den)) * (x.num * (EqualDen / x.den));
-                    y.den = EqualDen;
-                    //simplifying fractions
-                    int nod = NOD(y.den, y.num);
-                    y.den = y.den / nod;
-                    y.num = y.num / nod;
-                }
                 return y;
             }
-            public Fractions Divine(Fractions x)
+            public Fractions Division(Fractions x)
             {
                 Fractions y = new Fractions();
-                                
+                y.num = num * SwapNum(x.num,x.den);
+                y.den = den * SwapDen(x.num,x.den);
+                //simplifying fractions
+                int nod = NOD(y.den, y.num);
+                y.den = y.den / nod;
+                y.num = y.num / nod;
                 return y;
             }
             
@@ -172,6 +154,20 @@ namespace HomeWork3
                 }
                 return a;
             }            
+            static int SwapNum(int num,int den)
+            {
+                num = num + den;
+                den = num - den;
+                num = num - den;
+                return num;
+            }
+            static int SwapDen(int num,int den)
+            {
+                num = num + den;
+                den = num - den;
+                num = num - den;
+                return den;
+            }
             //Simplifying fractions NEED REALIZE
             static void SetSimply()
             {
