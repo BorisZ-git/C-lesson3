@@ -82,11 +82,6 @@ namespace HomeWork3
                 {
                     y.den = den;
                     y.num = num + x.num;
-                    //simplifying fractions
-                    int nod = NOD(y.den, y.num);
-                    y.den = y.den / nod;
-                    y.num = y.num / nod;
-
                 }
                 //We need to set all fractions to one denominator
                 else
@@ -97,28 +92,19 @@ namespace HomeWork3
                     //reduce to a common denominator
                     y.num = (num * (EqualDen / den)) + (x.num * (EqualDen / x.den));
                     y.den = EqualDen;
-                    //simplifying fractions
-                    int nod = NOD(y.den, y.num);
-                    y.den = y.den / nod;
-                    y.num = y.num / nod;
                 }
+                //simplifying fractions
+                SetSimply(y);
                 return y;
             }            
             public Fractions Minus(Fractions x)
             {
                 Fractions y = new Fractions();
                 Console.WriteLine("Разница дробей: ");
-
-
                 if (den == x.den)
                 {
                     y.den = den;
                     y.num = num - x.num;
-                    //simplifying fractions
-                    int nod = NOD(y.den, y.num);
-                    y.den = y.den / nod;
-                    y.num = y.num / nod;
-
                 }
                 //We need to set all fractions to one denominator
                 else
@@ -129,11 +115,9 @@ namespace HomeWork3
                     //reduce to a common denominator
                     y.num = (num * (EqualDen / den)) - (x.num * (EqualDen / x.den));
                     y.den = EqualDen;
-                    //simplifying fractions
-                    int nod = NOD(y.den, y.num);
-                    y.den = y.den / nod;
-                    y.num = y.num / nod;
                 }
+                //simplifying fractions
+                SetSimply(y);
                 return y;
             }
             public Fractions Multiplication(Fractions x)
@@ -143,9 +127,7 @@ namespace HomeWork3
                 y.num = num * x.num;
                 y.den = den * x.den;
                 //simplifying fractions
-                int nod = NOD(y.den, y.num);
-                y.den = y.den / nod;
-                y.num = y.num / nod;
+                SetSimply(y);
                 return y;
             }
             public Fractions Division(Fractions x)
@@ -155,9 +137,7 @@ namespace HomeWork3
                 y.num = num * SwapNum(x.num,x.den);
                 y.den = den * SwapDen(x.num,x.den);
                 //simplifying fractions
-                int nod = NOD(y.den, y.num);
-                y.den = y.den / nod;
-                y.num = y.num / nod;
+                SetSimply(y);
                 return y;
             }            
             //Realize method ShowRes
@@ -189,9 +169,11 @@ namespace HomeWork3
                 return den;
             }
             //Simplifying fractions NEED REALIZE
-            static void SetSimply()
+            static void SetSimply(Fractions y)
             {
-
+                int nod = NOD(y.den, y.num);
+                y.den = y.den / nod;
+                y.num = y.num / nod;                
             }
         }
     }
